@@ -7,6 +7,38 @@ public class Reserva {
 	private Evento evento;
 	private Usuario usuario;
 	private Servicio servicio;
+	private Boolean activo = true;
+	private Boolean realizado = false;
+	private Boolean aceptado = null;
+	private Long id;
+		
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Boolean getAceptado() {
+		return aceptado;
+	}
+	public void setAceptado(Boolean aceptado) {
+		this.aceptado = aceptado;
+	}
+	public Boolean getRealizado() {
+		return realizado;
+	}
+	public void setRealizado(Boolean realizado) {
+		this.realizado = realizado;
+	}
+	
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+	
 	public String getFormaPago() {
 		return formaPago;
 	}
@@ -58,8 +90,10 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [formaPago=" + formaPago + ", email=" + email + ", telefono=" + telefono + ", evento=" + evento
-				+ ", usuario=" + usuario + ", servicio=" + servicio + "]";
+				+ ", usuario=" + usuario + ", servicio=" + servicio + ", activo=" + activo + ", realizado=" + realizado
+				+ ", aceptado=" + aceptado + ", id=" + id + "]";
 	}
+	
 	
 	
 

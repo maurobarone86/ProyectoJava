@@ -10,9 +10,33 @@ public class Servicio {
 	private Long whatsapp;
 	private String instagram;
 	private String twiter;
-	private Integer puntaje;
+	private int[] puntaje = new int[4];
 	private List<Imagen> imagenes;
 	private List<Reserva> reservas;
+	private Boolean activo = true;
+	private Long id;
+		
+	
+	
+	public int[] getPuntaje() {
+		return puntaje;
+	}
+	public void setPuntaje(int[] puntaje) {
+		this.puntaje = puntaje;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -56,12 +80,7 @@ public class Servicio {
 	public void setTwiter(String twiter) {
 		this.twiter = twiter;
 	}
-	public Integer getPuntaje() {
-		return puntaje;
-	}
-	public void setPuntaje(Integer puntaje) {
-		this.puntaje = puntaje;
-	}
+	
 	public List<Imagen> getImagenes() {
 		return imagenes;
 	}
@@ -84,7 +103,7 @@ public class Servicio {
 		this.whatsapp = whatsapp;
 		this.instagram = instagram;
 		this.twiter = twiter;
-		this.puntaje = puntaje;
+		for (int i =0;i < 4;i++){this.puntaje[i]=0;}
 		this.imagenes = imagenes;
 		this.reservas = reservas;
 	}
@@ -95,8 +114,9 @@ public class Servicio {
 	public String toString() {
 		return "Servicio [nombre=" + nombre + ", tipo=" + tipo + ", descripcion=" + descripcion + ", url=" + url
 				+ ", whatsapp=" + whatsapp + ", instagram=" + instagram + ", twiter=" + twiter + ", puntaje=" + puntaje
-				+ ", imagenes=" + imagenes + ", reservas=" + reservas + "]";
+				+ ", imagenes=" + imagenes + ", reservas=" + reservas + ", activo=" + activo + ", id=" + id + "]";
 	}
+	
 	
 	
 	

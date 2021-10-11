@@ -10,11 +10,27 @@ public class Usuario {
 	private String direccion;
 	private String nombreUsuario;
 	private String password;
-	private List<Reserva> reservas;
+	
+	
 	private List<Evento> eventos;
 	private List<Servicio> servicios;
+	private Boolean activo = true;
+	private Long id;
+		
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -51,12 +67,7 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<Reserva> getReservas() {
-		return reservas;
-	}
-	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
-	}
+	
 	public List<Evento> getEventos() {
 		return eventos;
 	}
@@ -70,7 +81,7 @@ public class Usuario {
 		this.servicios = servicios;
 	}
 	public Usuario(String nombre, String apellido, Date fechaNac, String direccion, String nombreUsuario,
-			String password, List<Reserva> reservas, List<Evento> eventos, List<Servicio> servicios) {
+			String password,  List<Evento> eventos, List<Servicio> servicios) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -78,7 +89,7 @@ public class Usuario {
 		this.direccion = direccion;
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
-		this.reservas = reservas;
+		
 		this.eventos = eventos;
 		this.servicios = servicios;
 	}
@@ -88,9 +99,9 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", apellido=" + apellido + ", fechaNac=" + fechaNac + ", direccion="
-				+ direccion + ", nombreUsuario=" + nombreUsuario + ", password=" + password + ", reservas=" + reservas
-				+ ", eventos=" + eventos + ", servicios=" + servicios + "]";
+				+ direccion + ", nombreUsuario=" + nombreUsuario + ", password=" + password + ", reservas=" +  ", eventos=" + eventos + ", servicios=" + servicios + ", activo=" + activo + ", id=" + id + "]";
 	}
+	
 	
 	
 	

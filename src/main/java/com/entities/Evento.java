@@ -14,6 +14,32 @@ public class Evento {
 	private LocalDate fecha;
 	private LocalTime hora;
 	private List<Reserva> reservas;
+	private Boolean activo = true;
+	private Boolean realizado = false;
+	private Long id;
+		
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+	public Boolean getRealizado() {
+		return realizado;
+	}
+	public void setRealizado(Boolean realizado) {
+		this.realizado = realizado;
+	}
+	
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -89,8 +115,10 @@ public class Evento {
 	public String toString() {
 		return "Evento [nombre=" + nombre + ", direccion=" + direccion + ", codigoPostal=" + codigoPostal
 				+ ", provincia=" + provincia + ", geolocalizacion=" + geolocalizacion + ", tipo=" + tipo + ", fecha="
-				+ fecha + ", hora=" + hora + ", reservas=" + reservas + "]";
+				+ fecha + ", hora=" + hora + ", reservas=" + reservas + ", activo=" + activo + ", realizado="
+				+ realizado + ", id=" + id + "]";
 	}
+	
 	
 	
 	
