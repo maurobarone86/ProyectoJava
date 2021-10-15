@@ -8,8 +8,7 @@ public class Reserva {
 	private Usuario usuario;
 	private Servicio servicio;
 	private Boolean activo = true;
-	private Boolean realizado = false;
-	private Boolean aceptado = null;
+	private Estado estado;
 	private Long id;
 		
 	
@@ -19,19 +18,13 @@ public class Reserva {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Boolean getAceptado() {
-		return aceptado;
+		
+	public Estado getEstado() {
+		return estado;
 	}
-	public void setAceptado(Boolean aceptado) {
-		this.aceptado = aceptado;
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
-	public Boolean getRealizado() {
-		return realizado;
-	}
-	public void setRealizado(Boolean realizado) {
-		this.realizado = realizado;
-	}
-	
 	public Boolean getActivo() {
 		return activo;
 	}
@@ -75,7 +68,14 @@ public class Reserva {
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
 	}
-	public Reserva(String formaPago, String email, Long telefono, Evento evento, Usuario usuario, Servicio servicio) {
+	@Override
+	public String toString() {
+		return "Reserva [formaPago=" + formaPago + ", email=" + email + ", telefono=" + telefono + ", evento=" + evento
+				+ ", usuario=" + usuario + ", servicio=" + servicio + ", activo=" + activo + ", estado=" + estado
+				+ ", id=" + id + "]";
+	}
+	public Reserva(String formaPago, String email, Long telefono, Evento evento, Usuario usuario, Servicio servicio,
+			Boolean activo, Estado estado, Long id) {
 		super();
 		this.formaPago = formaPago;
 		this.email = email;
@@ -83,16 +83,11 @@ public class Reserva {
 		this.evento = evento;
 		this.usuario = usuario;
 		this.servicio = servicio;
+		this.activo = activo;
+		this.estado = estado;
+		this.id = id;
 	}
-	public Reserva() {
-		
-	}
-	@Override
-	public String toString() {
-		return "Reserva [formaPago=" + formaPago + ", email=" + email + ", telefono=" + telefono + ", evento=" + evento
-				+ ", usuario=" + usuario + ", servicio=" + servicio + ", activo=" + activo + ", realizado=" + realizado
-				+ ", aceptado=" + aceptado + ", id=" + id + "]";
-	}
+	
 	
 	
 	

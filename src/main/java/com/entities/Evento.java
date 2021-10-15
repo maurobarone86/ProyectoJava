@@ -10,15 +10,20 @@ public class Evento {
 	private Integer codigoPostal;
 	private String provincia;
 	private String geolocalizacion;
-	private String tipo;
+	private TipoEvento tipo;
 	private LocalDate fecha;
 	private LocalTime hora;
 	private List<Reserva> reservas;
-	private Boolean activo = true;
-	private Boolean realizado = false;
+	private Estado estado;
 	private Long id;
 		
 	
+	public Estado getEstado() {
+		return estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -27,20 +32,13 @@ public class Evento {
 	}
 	
 	
-	public Boolean getRealizado() {
-		return realizado;
+		
+	public TipoEvento getTipo() {
+		return tipo;
 	}
-	public void setRealizado(Boolean realizado) {
-		this.realizado = realizado;
+	public void setTipo(TipoEvento tipo) {
+		this.tipo = tipo;
 	}
-	
-	public Boolean getActivo() {
-		return activo;
-	}
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
-	}
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -71,12 +69,7 @@ public class Evento {
 	public void setGeolocalizacion(String geolocalizacion) {
 		this.geolocalizacion = geolocalizacion;
 	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+	
 	public LocalDate getFecha() {
 		return fecha;
 	}
@@ -95,8 +88,14 @@ public class Evento {
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
 	}
+	@Override
+	public String toString() {
+		return "Evento [nombre=" + nombre + ", direccion=" + direccion + ", codigoPostal=" + codigoPostal
+				+ ", provincia=" + provincia + ", geolocalizacion=" + geolocalizacion + ", tipo=" + tipo + ", fecha="
+				+ fecha + ", hora=" + hora + ", reservas=" + reservas + ", estado=" + estado + ", id=" + id + "]";
+	}
 	public Evento(String nombre, String direccion, Integer codigoPostal, String provincia, String geolocalizacion,
-			String tipo, LocalDate fecha, LocalTime hora, List<Reserva> reservas) {
+			TipoEvento tipo, LocalDate fecha, LocalTime hora, List<Reserva> reservas, Estado estado, Long id) {
 		super();
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -107,17 +106,14 @@ public class Evento {
 		this.fecha = fecha;
 		this.hora = hora;
 		this.reservas = reservas;
+		this.estado = estado;
+		this.id = id;
 	}
 	public Evento() {
 		
 	}
-	@Override
-	public String toString() {
-		return "Evento [nombre=" + nombre + ", direccion=" + direccion + ", codigoPostal=" + codigoPostal
-				+ ", provincia=" + provincia + ", geolocalizacion=" + geolocalizacion + ", tipo=" + tipo + ", fecha="
-				+ fecha + ", hora=" + hora + ", reservas=" + reservas + ", activo=" + activo + ", realizado="
-				+ realizado + ", id=" + id + "]";
-	}
+	
+	
 	
 	
 	

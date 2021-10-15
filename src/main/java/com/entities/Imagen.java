@@ -2,9 +2,8 @@ package com.entities;
 
 import java.util.Arrays;
 
-import com.Interface.InterImagen;
 
-public abstract class Imagen implements InterImagen {
+public class Imagen {
 	private String nombre;
 	private byte[] dataArchivo;
 	private Boolean activo = true;
@@ -37,11 +36,8 @@ public abstract class Imagen implements InterImagen {
 	public void setDataArchivo(byte[] dataArchivo) {
 		this.dataArchivo = dataArchivo;
 	}
-	public Imagen(String nombre, byte[] dataArchivo) {
-		super();
-		this.nombre = nombre;
-		this.dataArchivo = dataArchivo;
-	}
+	
+	
 	public Imagen() {
 		
 	}
@@ -49,6 +45,13 @@ public abstract class Imagen implements InterImagen {
 	public String toString() {
 		return "Imagen [nombre=" + nombre + ", dataArchivo=" + Arrays.toString(dataArchivo) + ", activo=" + activo
 				+ ", id=" + id + "]";
+	}
+	public Imagen(String nombre, byte[] dataArchivo, Boolean activo, Long id) {
+		super();
+		this.nombre = nombre;
+		this.dataArchivo = dataArchivo;
+		this.activo = activo;
+		this.id = id;
 	}
 	
 	

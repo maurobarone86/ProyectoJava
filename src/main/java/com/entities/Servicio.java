@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Servicio {
 	private String nombre;
-	private String tipo;
+	private TipoServicio tipo;
 	private String descripcion;
 	private String url;
 	private Long whatsapp;
 	private String instagram;
 	private String twiter;
-	private int[] puntaje = new int[4];
+	private List<Valoracion> valoraciones;
 	private List<Imagen> imagenes;
 	private List<Reserva> reservas;
 	private Boolean activo = true;
@@ -18,11 +18,17 @@ public class Servicio {
 		
 	
 	
-	public int[] getPuntaje() {
-		return puntaje;
+	public TipoServicio getTipo() {
+		return tipo;
 	}
-	public void setPuntaje(int[] puntaje) {
-		this.puntaje = puntaje;
+	public void setTipo(TipoServicio tipo) {
+		this.tipo = tipo;
+	}
+	public List<Valoracion> getValoraciones() {
+		return valoraciones;
+	}
+	public void setValoraciones(List<Valoracion> valoraciones) {
+		this.valoraciones = valoraciones;
 	}
 	public Long getId() {
 		return id;
@@ -44,12 +50,7 @@ public class Servicio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -93,8 +94,20 @@ public class Servicio {
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
 	}
-	public Servicio(String nombre, String tipo, String descripcion, String url, Long whatsapp, String instagram,
-			String twiter, Integer puntaje, List<Imagen> imagenes, List<Reserva> reservas) {
+	
+	public Servicio() {
+		
+	}
+	@Override
+	public String toString() {
+		return "Servicio [nombre=" + nombre + ", tipo=" + tipo + ", descripcion=" + descripcion + ", url=" + url
+				+ ", whatsapp=" + whatsapp + ", instagram=" + instagram + ", twiter=" + twiter + ", valoraciones="
+				+ valoraciones + ", imagenes=" + imagenes + ", reservas=" + reservas + ", activo=" + activo + ", id="
+				+ id + "]";
+	}
+	public Servicio(String nombre, TipoServicio tipo, String descripcion, String url, Long whatsapp, String instagram,
+			String twiter, List<Valoracion> valoraciones, List<Imagen> imagenes, List<Reserva> reservas, Boolean activo,
+			Long id) {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;
@@ -103,19 +116,14 @@ public class Servicio {
 		this.whatsapp = whatsapp;
 		this.instagram = instagram;
 		this.twiter = twiter;
-		for (int i =0;i < 4;i++){this.puntaje[i]=0;}
+		this.valoraciones = valoraciones;
 		this.imagenes = imagenes;
 		this.reservas = reservas;
+		this.activo = activo;
+		this.id = id;
 	}
-	public Servicio() {
-		
-	}
-	@Override
-	public String toString() {
-		return "Servicio [nombre=" + nombre + ", tipo=" + tipo + ", descripcion=" + descripcion + ", url=" + url
-				+ ", whatsapp=" + whatsapp + ", instagram=" + instagram + ", twiter=" + twiter + ", puntaje=" + puntaje
-				+ ", imagenes=" + imagenes + ", reservas=" + reservas + ", activo=" + activo + ", id=" + id + "]";
-	}
+	
+	
 	
 	
 	
