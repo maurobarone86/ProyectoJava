@@ -1,21 +1,63 @@
-package com.entities;
+package entities;
 
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
-
-public class Evento {
-	private String nombre;
-	private String direccion;
-	private Integer codigoPostal;
-	private String provincia;
-	private String geolocalizacion;
-	private TipoEvento tipo;
-	private LocalDate fecha;
-	private LocalTime hora;
-	private List<Reserva> reservas;
-	private Estado estado;
+@Entity
+@Table(name="eventos")
+public class Evento implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_evento")
 	private Long id;
+	
+	@Column
+	private String nombre;
+	
+	@Column
+	private String direccion;
+	
+	@Column
+	private Integer codigoPostal;
+	
+	@Column
+	private String provincia;
+	
+	@Column
+	private String geolocalizacion;
+	
+	@OneToOne
+	private TipoEvento tipo;
+	
+	@Column
+	private LocalDate fecha;
+	
+	@Column
+	private LocalTime hora;
+	
+	@OneToMany(mappedBy="evento")
+	private List<Reserva> reservas;
+	
+	@OneToOne
+	private Estado estado;
+	
+	
+	
+	
 		
 	
 	public Estado getEstado() {

@@ -1,21 +1,58 @@
-package com.entities;
+package entities;
 
 import java.util.Date;
 import java.util.List;
 
-public class Usuario {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuarios")
+public class Usuario implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_usuario")
+	private Long id;
+	
+	@Column
 	private String nombre;
+	
+	@Column
 	private String apellido;
+	
+	@Column
 	private Date fechaNac;
+	
+	@Column
 	private String direccion;
+	
+	@Column
 	private String nombreUsuario;
+	
+	@Column
 	private String password;
 	
-	
-	private List<Evento> eventos;
-	private List<Servicio> servicios;
+	@Column
 	private Boolean activo = true;
-	private Long id;
+	
+	@OneToMany
+	private List<Evento> eventos;
+	
+	@OneToMany
+	private List<Servicio> servicios;
+	
+	
+	
+	
 		
 	
 	public Long getId() {

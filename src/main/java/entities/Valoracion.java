@@ -1,10 +1,37 @@
-package com.entities;
+package entities;
 
-public class Valoracion {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="valoracion")
+public class Valoracion implements java.io.Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_valoracion")
 	private Long id;
+	
+	@Column
 	private String nombre;
+	
+	@Column
 	private Boolean activo= true;
+	
+	@Column
 	private Integer puntos=0;
+	
+	
 	public Long getId() {
 		return id;
 	}

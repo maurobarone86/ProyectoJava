@@ -1,20 +1,50 @@
-package com.entities;
+package entities;
 
 import java.util.List;
 
-public class Servicio {
-	private String nombre;
-	private TipoServicio tipo;
-	private String descripcion;
-	private String url;
-	private Long whatsapp;
-	private String instagram;
-	private String twiter;
-	private List<Valoracion> valoraciones;
-	private List<Imagen> imagenes;
-	private List<Reserva> reservas;
-	private Boolean activo = true;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name="servicios")
+public class Servicio implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_servicio")
 	private Long id;
+	
+	@Column
+	private String nombre;
+	@OneToOne
+	private TipoServicio tipo;
+	@Column
+	private String descripcion;
+	@Column
+	private String url;
+	@Column
+	private Long whatsapp;
+	@Column
+	private String instagram;
+	@Column
+	private String twiter;
+	@OneToMany
+	private List<Valoracion> valoraciones;
+	@OneToMany
+	private List<Imagen> imagenes;
+	
+	@OneToMany(mappedBy="servicio")
+	private List<Reserva> reservas;
+	@Column
+	private Boolean activo = true;
+	
 		
 	
 	

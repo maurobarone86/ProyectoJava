@@ -1,15 +1,54 @@
-package com.entities;
+package entities;
 
-public class Reserva {
-	private String formaPago;
-	private String email;
-	private Long telefono;
-	private Evento evento;
-	private Usuario usuario;
-	private Servicio servicio;
-	private Boolean activo = true;
-	private Estado estado;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reservas")
+public class Reserva implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_reserva")
 	private Long id;
+	
+	@Column
+	private String formaPago;
+	
+	@Column
+	private String email;
+	
+	@Column
+	private Long telefono;
+	
+	@ManyToOne
+	@JoinColumn(name="id_evento")
+	private Evento evento;
+	
+	@OneToOne
+	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name="id_servicio")
+	private Servicio servicio;
+	
+	@Column
+	private Boolean activo = true;
+	
+	@OneToOne
+	private Estado estado;
+	
 		
 	
 	public Long getId() {

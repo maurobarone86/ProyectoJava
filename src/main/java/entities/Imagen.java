@@ -1,12 +1,33 @@
-package com.entities;
+package entities;
 
 import java.util.Arrays;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
-public class Imagen {
+import org.hibernate.annotations.Type;
+
+@Entity
+@Table(name="imagen")
+public class Imagen implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Column
 	private String nombre;
+	@Type(type = "org.hibernate.type.BlobType")
+	@Lob
 	private byte[] dataArchivo;
+	@Column
 	private Boolean activo = true;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_imagen")
 	private Long id;
 		
 	
