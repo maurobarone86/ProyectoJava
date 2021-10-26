@@ -91,18 +91,13 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	
 		
 	
-	@Override
-	public boolean existe(Serializable id) {
-		// TODO Auto-generated method stub
-		T each =null;
-		each = Conexion.getManager().find(getPersistentClass(), id);
-		if (each != null) { return true;}
-		return false;
-	}
+	
+	
 	@Override
 	public T recuperar(Serializable id) {
 		return Conexion.getManager().find(getPersistentClass(), id);
 			}
+	
 	
 	
 }

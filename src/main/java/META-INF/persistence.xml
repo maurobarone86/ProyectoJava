@@ -23,7 +23,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 <property name="hibernate.connection.username" value="root" />
 <property name="hibernate.default_schema" value="stock" />
 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-<property name="hibernate.hbm2ddl.auto" value="create"/>       
+<property name="hibernate.hbm2ddl.auto" value="update"/>       
     </properties>
 
   </persistence-unit>
