@@ -89,9 +89,19 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	return resultado;
 	}
 	
-		
-	
-	
+	@SuppressWarnings("unchecked")
+	public List<T> recuperarActivos() throws Exception {
+		List<T> resultado = null;
+		try {
+			Query consulta=Conexion.getManager().createQuery("select e from "+ getPersistentClass().getSimpleName()+" e WHERE e.activo = :logic");
+			consulta.setParameter("logic", Boolean.TRUE);
+			resultado = (List<T>) consulta.getResultList();
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	return resultado;
+	}
 	
 	@Override
 	public T recuperar(Serializable id) {

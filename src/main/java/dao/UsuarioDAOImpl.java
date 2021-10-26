@@ -37,7 +37,7 @@ public class UsuarioDAOImpl  extends GenericDAOImpl<Usuario> implements UsuarioD
 		Query q = Conexion.getManager().createQuery("SELECT u FROM Usuario u WHERE u.nombreUsuario = :nom AND u.activo = :logic");
 		q.setParameter("nom",nombreusuario);
 		q.setParameter("logic",Boolean.TRUE);
-				
+			
 		try {
 			Usuario usuario =(Usuario) q.getSingleResult();
 			System.out.println("existe el usuario, lo actualizo");
@@ -54,6 +54,13 @@ public class UsuarioDAOImpl  extends GenericDAOImpl<Usuario> implements UsuarioD
 		}
 		
 	}
+
+	@Override
+	public Usuario obtenerUser(String nombreUsuario) {
+		Usuario user=this.existe(nombreUsuario);
+		return user;
+	}
+	
 	
 	
 	

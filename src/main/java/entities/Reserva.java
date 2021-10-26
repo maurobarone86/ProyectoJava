@@ -127,8 +127,20 @@ public class Reserva implements java.io.Serializable{
 		this.id = id;
 	}
 	
+	public Reserva(String formaPago, String email, Long telefono, Evento evento, Usuario usuario, Servicio servicio, Estado estado) {
+		super();
+		this.formaPago = formaPago;
+		this.email = email;
+		this.telefono = telefono;
+		this.evento = evento;
+		this.usuario = usuario;
+		this.servicio = servicio;
+		this.estado = estado;
+	}
 	
-	
+	public Reserva() {
+		
+	}
 	
 
 }

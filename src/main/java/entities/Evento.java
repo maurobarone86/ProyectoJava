@@ -55,8 +55,8 @@ public class Evento implements java.io.Serializable{
 	@OneToOne
 	private Estado estado;
 	
-	
-	
+	@Column
+	private Boolean activo=true;
 	
 		
 	
@@ -129,6 +129,12 @@ public class Evento implements java.io.Serializable{
 	}
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
+	}
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 	@Override
 	public String toString() {

@@ -153,7 +153,17 @@ public class Servicio implements java.io.Serializable{
 		this.id = id;
 	}
 	
-	
+	public Servicio(String nombre, TipoServicio tipo, String descripcion, String url, Long whatsapp, String instagram,
+			String twiter) {
+		super();
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.descripcion = descripcion;
+		this.url = url;
+		this.whatsapp = whatsapp;
+		this.instagram = instagram;
+		this.twiter = twiter;
+	}
 	
 	
 	
