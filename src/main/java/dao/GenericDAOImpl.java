@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import JPAUtil.Conexion;
+
 
 public class GenericDAOImpl<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
@@ -108,6 +111,50 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 		return Conexion.getManager().find(getPersistentClass(), id);
 			}
 	
+	public void save(T entity) throws Exception {
+		// TODO Auto-generated method stub
+		try {
+			T entityAux = existe(entity);
+			if (entityAux != null){
+				this.actualizar(entityAux);
+				}
+			else {
+				this.persistir(entity);
+				}
+			}
+		catch (Exception e) {
+			throw e;
+			}
+	}
+	
+	public Query makeQuery(T entity) {
+		return null;
+	}
+	
+public T existe(T entity)throws NoResultException, NonUniqueResultException{
+		
+		Query q = this.makeQuery(entity);
+			
+		try {
+			@SuppressWarnings("unchecked")
+			T teAux =(T) q.getSingleResult();
+			System.out.println("existe el "+getPersistentClass().toString()+", lo actualizo");
+			
+			return teAux;
+			}
+		catch (NoResultException e) {
+			System.out.println("la consulta no trajo nada, se persiste el "+getPersistentClass().toString());
+			return null;
+		}
+		catch (NonUniqueResultException e1) {
+			System.out.println(entity.toString()+ "existe mas de un "+getPersistentClass().toString()+" activo, no se puede actualizar");
+			throw e1;
+		}
 	
 	
+	
+	
+	
+}
+
 }

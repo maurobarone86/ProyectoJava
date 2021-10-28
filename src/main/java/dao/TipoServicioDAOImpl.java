@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import JPAUtil.Conexion;
 import entities.TipoServicio;
-import entities.Usuario;
 
 public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements TipoServicioDAO  {
 
