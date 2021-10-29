@@ -26,8 +26,7 @@ public class MainTestDao {
 	
 	public static void main(String[] args) throws Exception  {
 		// TODO Auto-generated method stub
-		imprimirMisServicios();
-		//agregarUser("Mauro","Barone");
+		agregarUser("Mauro","Barone");
 		}
 	public static void agregarUser(String nombre, String apellido) throws Exception {
 		try {
@@ -42,7 +41,7 @@ public class MainTestDao {
 			usuario.setNombreUsuario("maurobarone1");
 			usuario.setFechaNac(cumple);
 			
-			
+			/*
 			Evento evento1 = new Evento();
 			Evento evento2 = new Evento();
 			Evento evento3 = new Evento();
@@ -99,8 +98,6 @@ public class MainTestDao {
 			usuario.setServicios(listaServicios);
 			
 			
-			
-			
 			usuario = usuarioDAO.save(usuario);
 			System.out.println("Guardado de usuario correcto");
 			Reserva reserva1 = new Reserva();
@@ -110,7 +107,11 @@ public class MainTestDao {
 			
 			reserva1 = reservaDAO.save(reserva1);
 			usuarioDAO.borradoLogico(usuario);
-			
+			 */
+			usuario=new Usuario("Pedro", "Rodriguez", Date.valueOf("1986-05-29"), "PedroRodriguez");
+			usuarioDAO.save(usuario);
+			usuario=new Usuario("Juan", "Cruz", Date.valueOf("1991-05-12"), "JuanCruz");
+			usuarioDAO.save(usuario);
 		}
 		catch(Exception e) {
 			throw e;

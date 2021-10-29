@@ -15,6 +15,6 @@ public T recuperar(Serializable id);
 public List<T> recuperarActivos()throws Exception;
 public List<T> recuperarTodos(String column)throws Exception;
 public T existe(T entity);
-public T save(T entity)throws Exception;
+public void save(T entity)throws Exception;
 abstract public Query makeQuery(T entity);
 }

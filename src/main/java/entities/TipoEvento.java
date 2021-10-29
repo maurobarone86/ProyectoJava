@@ -59,6 +59,10 @@ public class TipoEvento implements java.io.Serializable{
 		this.activo = activo;
 		this.publico = publico;
 	}
+	public TipoEvento(String nombre, Boolean publico) {
+		this.nombre=nombre;
+		this.publico=publico;
+	}
 	public TipoEvento() {
 		
 	}

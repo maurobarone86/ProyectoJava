@@ -4,6 +4,7 @@ package entities;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,11 +49,11 @@ public class Usuario implements java.io.Serializable{
 	@Column
 	private Boolean activo = true;
 	
-	@OneToMany
+	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn
 	private List<Evento> eventos;
 	
-	@OneToMany
+	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn
 	private List<Servicio> servicios;
 	
@@ -115,13 +116,27 @@ public class Usuario implements java.io.Serializable{
 		return eventos;
 	}
 	public void setEventos(List<Evento> eventos) {
-		this.eventos = eventos;
+		if (eventos!=null) {
+			this.eventos = eventos;
+		}
+	}
+	public void setEvento(Evento evento) {
+		if (evento!=null) {
+			this.eventos.add(evento);
+		}
 	}
 	public List<Servicio> getServicios() {
 		return servicios;
 	}
 	public void setServicios(List<Servicio> servicios) {
-		this.servicios = servicios;
+		if (servicios!=null) {
+			this.servicios = servicios;
+		}
+	}
+	public void setServicio(Servicio servicio) {
+		if (servicio!=null) {
+			this.servicios.add(servicio);
+		}
 	}
 	public Usuario(String nombre, String apellido, Date fechaNac, String direccion, String nombreUsuario,
 			String password,  List<Evento> eventos, List<Servicio> servicios) {
@@ -135,6 +150,12 @@ public class Usuario implements java.io.Serializable{
 		
 		this.eventos = eventos;
 		this.servicios = servicios;
+	}
+	public Usuario(String nombre, String apellido, Date fecha, String nombreUser) {
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.fechaNac=fecha;
+		this.nombreUsuario=nombreUser;
 	}
 	public Usuario() {
 		

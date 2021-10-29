@@ -6,5 +6,7 @@ import entities.Estado;
 
 public interface EstadoDAO extends GenericDAO<Estado>{
 	public Query makeQuery(Estado estado);
+	public Estado obtenerEstado(String nombre); 
+	public void save(Estado estado) throws Exception;
 
 }

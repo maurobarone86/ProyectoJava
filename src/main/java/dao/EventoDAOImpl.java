@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.Date;
+
 import javax.persistence.Query;
 
 import JPAUtil.Conexion;
@@ -27,5 +29,12 @@ public class EventoDAOImpl extends GenericDAOImpl<Evento> implements EventoDAO {
 		this.actualizar(entity);
 	}
 	
-
+	@Override
+	public Evento obtenerEvento(String dato, String direccion,Date fecha) {
+		Evento evento= new Evento(dato);
+		evento.setDireccion(direccion);
+		evento.setFecha(fecha);
+		return super.existe(evento);
+	}
+	
 }

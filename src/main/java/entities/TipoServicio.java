@@ -50,6 +50,9 @@ public class TipoServicio implements java.io.Serializable{
 		this.nombre = nombre;
 		this.activo = activo;
 	}
+	public TipoServicio(String nombre) {
+		this.nombre=nombre;
+	}
 	public TipoServicio() {
 		
 	}

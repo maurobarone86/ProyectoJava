@@ -115,15 +115,15 @@ abstract public class GenericDAOImpl<T> implements GenericDAO<T> {
 		return Conexion.getManager().find(getPersistentClass(), id);
 			}
 	
-	public T save(T entity) throws Exception {
+	public void save(T entity) throws Exception {
 		// TODO Auto-generated method stub
 		try {
 			T entityAux = existe(entity);
 			if (entityAux != null){
-				return this.actualizar(entityAux);
+				this.actualizar(entityAux);
 				}
 			else {
-				return this.persistir(entity);
+				this.persistir(entity);
 				}
 			}
 		catch (Exception e) {

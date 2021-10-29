@@ -1,6 +1,5 @@
 package Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dao.EstadoDAO;
@@ -11,12 +10,9 @@ import dao.ReservaDAO;
 import dao.ReservaDAOImpl;
 import dao.ServicioDAO;
 import dao.ServicioDAOImpl;
-import dao.TipoServicioDAO;
-import dao.TipoServicioDAOImpl;
 import dao.UsuarioDAO;
 import dao.UsuarioDAOImpl;
 import entities.Servicio;
-import entities.TipoServicio;
 import entities.Usuario;
 import entities.Reserva;
 import entities.Estado;
@@ -24,39 +20,54 @@ import entities.Evento;
 
 public class MainTestReservaDAO {
 	private static EventoDAO eventoDAO= new EventoDAOImpl(Evento.class);
-	private static TipoServicioDAO tipoDAO= new TipoServicioDAOImpl(TipoServicio.class);
 	private static ServicioDAO servicioDAO= new ServicioDAOImpl(Servicio.class);
 	private static ReservaDAO reservaDAO= new ReservaDAOImpl(Reserva.class);
 	private static UsuarioDAO userDAO= new UsuarioDAOImpl(Usuario.class);
 	private static EstadoDAO estadoDAO=new EstadoDAOImpl(Estado.class);
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		imprimirTodosActivos();
+		agregarReserva();
 	}
-	public static void agregarServicios() throws Exception {
-		Evento evento= eventoDAO.recuperar(1L);
-		Servicio ser= servicioDAO.recuperar(1L);
-		Usuario user= userDAO.recuperar(1L);
-		Estado estado=null;
-		estado= estadoDAO.recuperar(1L);
-		TipoServicio t=(TipoServicio) tipoDAO.recuperar(1L);
-		System.out.println("El tipo obtenido es: "+t.getNombre());
-		Reserva r1=new Reserva("tarjeta", "pedroRodriguez@gmail.com", 2213445646L, evento, user, ser, estado);
-		reservaDAO.save(r1);
-		List<Reserva> reservas=new ArrayList<Reserva>();
-		reservas.add(r1);
-		evento.setReservas(reservas);
-		eventoDAO.actualizar(evento);
+	public static void agregarReserva() throws Exception {
+		Servicio ser= servicioDAO.obtenerServicio("parrillada");
+		Usuario user= userDAO.obtenerUser("JuanCruz");
+		Estado estado=estadoDAO.obtenerEstado("Aceptada");
+		if (ser!= null && user!=null && estado!=null) {
+			List<Evento> lista=user.getEventos();
+			for (Evento e: lista) {
+				System.out.println("Nombre: "+e.getNombre());
+				if (e.getNombre().equals("Cumpleaños Juan")) {
+					Reserva r1=new Reserva("tarjeta", "pedroRodriguez@gmail.com", 2213445646L, e, user, ser, estado);
+					e.setReserva(r1);
+					eventoDAO.actualizar(e);
+				}
+			}
+			userDAO.actualizar(user);
+		}else {
+			System.out.println("algo salio mal");
+		}
 	}
 	
+	public static void imprimirPorID(Long id) {
+		Reserva reserva= reservaDAO.recuperar(id);
+		System.out.println("Reserva: "+reserva);
+	}
 	public static void imprimirTodosActivos() throws Exception {
 		List<Reserva> lista= reservaDAO.recuperarActivos();
+		imprimir(lista, "Reserva Activo");
+	}
+	
+	public static void imprimirTodosOrdenados() throws Exception {
+		List<Reserva> lista= reservaDAO.recuperarTodos("email");
+		imprimir(lista, "Reserva Ordenado");
+	}
+	public static void imprimir(List<Reserva> lista, String estado) {
 		if (lista.size()>0) {
 			for (Reserva s: lista) {
-				System.out.println("Servicio: "+s.getUsuario().getNombre());
+				System.out.println(estado+": "+s);
 			}
 		}else {
-			System.out.println("No hay servicios");
+			System.out.println("No hay "+estado);
 		}
 	}
 

@@ -6,6 +6,7 @@ import javax.persistence.Query;
 import JPAUtil.Conexion;
 
 import entities.TipoServicio;
+import entities.Usuario;
 
 public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements TipoServicioDAO  {
 
@@ -13,6 +14,7 @@ public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements
 		super(clase);
 		// TODO Auto-generated constructor stub
 	}
+
 	public Query makeQuery(TipoServicio tipoServicio) {
 		Query q = Conexion.getManager().createQuery("SELECT u FROM TipoServicio u WHERE u.nombre = :nombre AND u.activo = :activo");
 		q.setParameter("nombre",tipoServicio.getNombre());
@@ -25,4 +27,19 @@ public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements
 		entity.setActivo(false);
 		this.actualizar(entity);
 	}
+
+	@Override
+	public TipoServicio obtenerTipoServicio(String nombre) {
+		// TODO Auto-generated method stub
+		if (nombre !=null) {
+			TipoServicio tipo= new TipoServicio(nombre);
+			return super.existe(tipo);
+		}
+		return null;
+	}
+	
+	public void save(TipoServicio tipo) throws Exception {
+		super.save(tipo);
+	}
+	
 }

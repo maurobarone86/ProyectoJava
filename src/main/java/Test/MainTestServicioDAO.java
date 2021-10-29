@@ -1,6 +1,5 @@
 package Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dao.ServicioDAO;
@@ -18,29 +17,41 @@ public class MainTestServicioDAO {
 	private static TipoServicioDAO tipoDAO= new TipoServicioDAOImpl(TipoServicio.class);
 	private static ServicioDAO servicioDAO=new ServicioDAOImpl(Servicio.class);
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		imprimirTodosActivos();
+		//agregarServicios();
 	}
 	public static void agregarServicios() throws Exception {
-		Usuario user= usuarioDAO.recuperar(1L);
-		TipoServicio t=(TipoServicio) tipoDAO.recuperar(1L);
-		System.out.println("El tipo obtenido es: "+t.getNombre());
-		Servicio s1=new Servicio("parrillada", t, "descripcion", "url", 23234234L ,"instagram","twiter");
-		servicioDAO.save(s1);
-		List<Servicio> servicios=new ArrayList<Servicio>();
-		servicios.add(s1);
-		user.setServicios(servicios);
-		usuarioDAO.actualizar(user);
+		Usuario user= usuarioDAO.obtenerUser("PedroRodriguez");
+		TipoServicio t= tipoDAO.obtenerTipoServicio("catering");
+		if (user !=null && t!=null) {
+			Servicio s1=new Servicio("Parrillada", t, "descripcion", "url", 23234234L ,"instagram","twiter");
+			Servicio s2=new Servicio("Sandwich", t, "descripcion", "url", 2323424L ,"instagram","twiter");
+			user.setServicio(s1);
+			user.setServicio(s2);
+			usuarioDAO.actualizar(user);
+		}else {
+			System.out.println("Algo salio mal ,"+user+ ",,,,"+t);
+		}
 	}
 	
 	public static void imprimirTodosActivos() throws Exception {
 		List<Servicio> lista= servicioDAO.recuperarActivos();
+		imprimir(lista, "Servicio Activo: ");
+	}
+	public static void imprimirPorID() {
+		Servicio ser= servicioDAO.recuperar(1L);
+		System.out.println("Servicio por id: "+ser.getNombre());
+	}
+	public static void imprimirTodosYordenado() throws Exception {
+		List<Servicio> lista= servicioDAO.recuperarTodos("nombre");
+		imprimir(lista, "Servicio Con Orden by: ");
+	}
+	public static void imprimir(List<Servicio> lista, String estado) {
 		if (lista.size()>0) {
 			for (Servicio s: lista) {
-				System.out.println("Servicio: "+s.getNombre());
+				System.out.println(estado+s);
 			}
 		}else {
-			System.out.println("No hay servicios");
+			System.out.println("No hay servicios por: "+estado);
 		}
 	}
 
