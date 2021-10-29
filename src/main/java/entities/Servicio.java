@@ -37,12 +37,15 @@ public class Servicio implements java.io.Serializable{
 	@Column
 	private String twiter;
 	
-	@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	//@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany( cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Valoracion> valoraciones;
 	
-	@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	//@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany( cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Imagen> imagenes;
 	
+	//@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Reserva> reservas;
 	@Column

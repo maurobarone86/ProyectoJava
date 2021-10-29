@@ -21,9 +21,9 @@ public class MainTestTipos {
 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		agregarTipoServicio();
-		agregarTipoEvento();
-		agregarEstado();
+		//agregarTipoServicio();
+		//agregarTipoEvento();
+		//agregarEstado();
 	}
 	public static void agregarTipoServicio() throws Exception {
 		TipoServicio tipo1=new TipoServicio("show en vivio");

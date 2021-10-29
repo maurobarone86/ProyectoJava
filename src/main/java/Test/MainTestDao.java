@@ -26,7 +26,7 @@ public class MainTestDao {
 	
 	public static void main(String[] args) throws Exception  {
 		// TODO Auto-generated method stub
-		agregarUser("Mauro","Barone");
+		//agregarUser("Mauro","Barone");
 		}
 	public static void agregarUser(String nombre, String apellido) throws Exception {
 		try {

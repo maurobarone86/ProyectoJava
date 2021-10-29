@@ -31,18 +31,18 @@ public class Imagen implements java.io.Serializable{
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_imagen")
 	private Long id;
-	
+	/*
 	@ManyToOne
 	@JoinColumn(name="id_servicio")
 	private Servicio servicio;
-		
+
 	
 	public Servicio getServicio() {
 		return servicio;
 	}
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
-	}
+	}*/
 	public Long getId() {
 		return id;
 	}

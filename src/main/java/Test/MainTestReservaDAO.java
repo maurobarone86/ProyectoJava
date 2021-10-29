@@ -26,7 +26,7 @@ public class MainTestReservaDAO {
 	private static EstadoDAO estadoDAO=new EstadoDAOImpl(Estado.class);
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		agregarReserva();
+		//agregarReserva();
 	}
 	public static void agregarReserva() throws Exception {
 		Servicio ser= servicioDAO.obtenerServicio("parrillada");

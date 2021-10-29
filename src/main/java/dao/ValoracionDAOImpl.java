@@ -17,7 +17,7 @@ public class ValoracionDAOImpl  extends GenericDAOImpl<Valoracion> implements Va
 	public Query makeQuery(Valoracion valoracion) {
 		Query q = Conexion.getManager().createQuery("SELECT u FROM TipoEvento u WHERE u.nombre = :nombre AND u.activo = :activo AND u.servicio = :servicio");
 		q.setParameter("nombre",valoracion.getNombre());
-		q.setParameter("servicio",valoracion.getServicio());
+		//q.setParameter("servicio",valoracion.getServicio());
 		q.setParameter("activo",Boolean.TRUE);
 		return q;
 	}
