@@ -66,7 +66,7 @@ abstract public class GenericDAOImpl<T> implements GenericDAO<T> {
 	    	}
 	}
 	
-	abstract public void borradoLogico(T entity);
+	
 	
 	
 	@Override
@@ -115,15 +115,15 @@ abstract public class GenericDAOImpl<T> implements GenericDAO<T> {
 		return Conexion.getManager().find(getPersistentClass(), id);
 			}
 	
-	public void save(T entity) throws Exception {
+	public T save(T entity) throws Exception {
 		// TODO Auto-generated method stub
 		try {
 			T entityAux = existe(entity);
 			if (entityAux != null){
-				this.actualizar(entityAux);
+				return this.actualizar(entityAux);
 				}
 			else {
-				this.persistir(entity);
+				return this.persistir(entity);
 				}
 			}
 		catch (Exception e) {

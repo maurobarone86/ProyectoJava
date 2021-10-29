@@ -18,9 +18,7 @@ public class EstadoDAOImpl extends GenericDAOImpl<Estado> implements EstadoDAO {
 		return super.existe(estado);
 	}
 	
-	public void save(Estado estado) throws Exception {
-		super.save(estado);
-	}
+	
 	
 	public Query makeQuery(Estado estado) {
 		Query q = Conexion.getManager().createQuery("SELECT e FROM Estado e WHERE e.nombre = :nombre AND e.activo = :activo");
@@ -28,12 +26,6 @@ public class EstadoDAOImpl extends GenericDAOImpl<Estado> implements EstadoDAO {
 		q.setParameter("activo",Boolean.TRUE);
 		return q;
 	}
-	@Override
-	public void borradoLogico(Estado entity) {
-		entity=	this.recuperar(entity.getId());
-		entity.setActivo(false);
-		this.actualizar(entity);
-		
-	}
+	
 
 }

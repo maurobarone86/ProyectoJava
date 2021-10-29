@@ -22,12 +22,7 @@ public class EventoDAOImpl extends GenericDAOImpl<Evento> implements EventoDAO {
 		q.setParameter("activo",Boolean.TRUE);
 		return q;
 	}
-	@Override
-	public void borradoLogico(Evento entity) {
-		entity=	this.recuperar(entity.getId());
-		entity.setActivo(false);
-		this.actualizar(entity);
-	}
+	
 	
 	@Override
 	public Evento obtenerEvento(String dato, String direccion,Date fecha) {

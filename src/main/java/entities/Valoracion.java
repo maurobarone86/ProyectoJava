@@ -33,7 +33,7 @@ public class Valoracion implements java.io.Serializable {
 	
 	@Column
 	private Integer puntos=0;
-	/*
+	
 	@ManyToOne
 	@JoinColumn(name="id_servicio")
 	private Servicio servicio;
@@ -44,7 +44,7 @@ public class Valoracion implements java.io.Serializable {
 	}
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
-	}*/
+	}
 	public Long getId() {
 		return id;
 	}

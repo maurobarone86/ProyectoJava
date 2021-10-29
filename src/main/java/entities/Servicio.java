@@ -2,7 +2,7 @@ package entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,16 +37,16 @@ public class Servicio implements java.io.Serializable{
 	@Column
 	private String twiter;
 	
-	//@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@OneToMany( cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	
+	@OneToMany(mappedBy="servicio")
 	private List<Valoracion> valoraciones;
 	
-	//@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@OneToMany( cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	
+	@OneToMany(mappedBy="servicio")
 	private List<Imagen> imagenes;
 	
-	//@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	
+	@OneToMany(mappedBy="servicio")
 	private List<Reserva> reservas;
 	@Column
 	private Boolean activo = true;

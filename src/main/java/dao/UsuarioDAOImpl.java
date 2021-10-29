@@ -35,12 +35,7 @@ public class UsuarioDAOImpl  extends GenericDAOImpl<Usuario> implements UsuarioD
 
 
 
-	@Override
-	public void borradoLogico(Usuario entity) {
-		entity=	this.recuperar(entity.getId());
-		entity.setActivo(false);
-		this.actualizar(entity);
-	}
+	
 	
 	
 	

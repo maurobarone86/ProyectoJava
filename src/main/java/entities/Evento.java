@@ -3,12 +3,14 @@ package entities;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -51,7 +53,7 @@ public class Evento implements java.io.Serializable{
 	@Column
 	private LocalTime hora;
 	
-	@OneToMany(mappedBy="evento", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(mappedBy="evento")
 	private List<Reserva> reservas;
 	
 	@OneToOne
@@ -60,7 +62,8 @@ public class Evento implements java.io.Serializable{
 	@Column
 	private Boolean activo=true;
 	
-		
+	@ManyToOne
+	private Usuario usaurio;	
 	
 	public Estado getEstado() {
 		return estado;

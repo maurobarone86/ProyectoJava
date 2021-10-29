@@ -4,7 +4,7 @@ import javax.persistence.Query;
 
 import JPAUtil.Conexion;
 import entities.TipoEvento;
-import entities.Usuario;
+
 
 public class TipoEventoDAOImpl extends GenericDAOImpl<TipoEvento> implements TipoEventoDAO {
 
@@ -19,12 +19,7 @@ public class TipoEventoDAOImpl extends GenericDAOImpl<TipoEvento> implements Tip
 		q.setParameter("activo",Boolean.TRUE);
 		return q;
 	}
-	@Override
-	public void borradoLogico(TipoEvento entity) {
-		entity=	this.recuperar(entity.getId());
-		entity.setActivo(false);
-		this.actualizar(entity);
-	}
+	
 
 	@Override
 	public TipoEvento obtenerTipoE(String nombre, Boolean publicado) {
@@ -36,9 +31,5 @@ public class TipoEventoDAOImpl extends GenericDAOImpl<TipoEvento> implements Tip
 		return null;
 	}
 	
-	public void save(TipoEvento tipo) throws Exception {
-		super.save(tipo);
-
-	}
-
+	
 }

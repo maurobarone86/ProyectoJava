@@ -6,7 +6,7 @@ import javax.persistence.Query;
 import JPAUtil.Conexion;
 
 import entities.TipoServicio;
-import entities.Usuario;
+
 
 public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements TipoServicioDAO  {
 
@@ -21,12 +21,7 @@ public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements
 		q.setParameter("activo",Boolean.TRUE);
 		return q;
 	}
-	@Override
-	public void borradoLogico(TipoServicio entity) {
-		entity=	this.recuperar(entity.getId());
-		entity.setActivo(false);
-		this.actualizar(entity);
-	}
+	
 
 	@Override
 	public TipoServicio obtenerTipoServicio(String nombre) {
@@ -38,8 +33,6 @@ public class TipoServicioDAOImpl extends GenericDAOImpl<TipoServicio> implements
 		return null;
 	}
 	
-	public void save(TipoServicio tipo) throws Exception {
-		super.save(tipo);
-	}
+	
 	
 }

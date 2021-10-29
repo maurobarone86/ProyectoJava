@@ -28,10 +28,11 @@ public class Imagen implements java.io.Serializable{
 	private byte[] dataArchivo;
 	@Column
 	private Boolean activo = true;
+	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_imagen")
 	private Long id;
-	/*
+	
 	@ManyToOne
 	@JoinColumn(name="id_servicio")
 	private Servicio servicio;
@@ -42,7 +43,7 @@ public class Imagen implements java.io.Serializable{
 	}
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
-	}*/
+	}
 	public Long getId() {
 		return id;
 	}

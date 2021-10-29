@@ -8,5 +8,5 @@ public interface TipoServicioDAO extends GenericDAO<TipoServicio>  {
 	public Query makeQuery(TipoServicio tipoServicio);
 
 	public TipoServicio obtenerTipoServicio(String nombre);
-	public void save(TipoServicio tipo) throws Exception;
+	
 }

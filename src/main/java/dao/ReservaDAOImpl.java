@@ -21,11 +21,6 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva> implements ReservaDA
 		return q;
 	}
 
-	@Override
-	public void borradoLogico(Reserva entity) {
-		entity=	this.recuperar(entity.getId());
-		entity.setActivo(false);
-		this.actualizar(entity);
-	}
+	
 	
 }

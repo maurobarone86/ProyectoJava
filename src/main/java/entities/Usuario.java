@@ -49,12 +49,10 @@ public class Usuario implements java.io.Serializable{
 	@Column
 	private Boolean activo = true;
 	
-	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn
+	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Evento> eventos;
 	
-	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn
+	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Servicio> servicios;
 	
 	

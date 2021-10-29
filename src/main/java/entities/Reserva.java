@@ -37,6 +37,7 @@ public class Reserva implements java.io.Serializable{
 	private Evento evento;
 	
 	@OneToOne
+	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 	
 	@ManyToOne
