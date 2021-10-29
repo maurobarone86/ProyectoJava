@@ -2,22 +2,12 @@ package Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.EntityManagerFactory;
-
-import JPAUtil.Conexion;
 import dao.EventoDAO;
 import dao.EventoDAOImpl;
-import dao.ServicioDAO;
-import dao.ServicioDAOImpl;
 import dao.TipoEventoDAO;
 import dao.TipoEventoDAOImpl;
-import dao.TipoServicioDAO;
-import dao.TipoServicioDAOImpl;
 import dao.UsuarioDAO;
 import dao.UsuarioDAOImpl;
-import entities.Servicio;
-import entities.TipoServicio;
 import entities.TipoEvento;
 import entities.Usuario;
 import entities.Evento;
@@ -29,7 +19,7 @@ public class MainTestEventoDAO {
 	private static EventoDAO eventoDAO=new EventoDAOImpl(Evento.class);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory fac= Conexion.getEntityManagerFactory();
+		
 	}
 	
 	public static void agregar() throws Exception {

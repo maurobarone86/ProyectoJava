@@ -33,11 +33,11 @@ public class Estado implements java.io.Serializable{
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
-		public Boolean getActivado() {
+		public Boolean getActivo() {
 			return activo;
 		}
-		public void setActivado(Boolean activado) {
-			this.activo = activado;
+		public void setActivo(Boolean activo) {
+			this.activo = activo;
 		}
 		@Override
 		public String toString() {

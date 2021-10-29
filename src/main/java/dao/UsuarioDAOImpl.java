@@ -12,9 +12,7 @@ public class UsuarioDAOImpl  extends GenericDAOImpl<Usuario> implements UsuarioD
 		// TODO Auto-generated constructor stub
 	}
 
-	public void save(Usuario usaurio) throws Exception{
-		super.save(usaurio);
-	}
+	
 	
 	
 
@@ -31,6 +29,17 @@ public class UsuarioDAOImpl  extends GenericDAOImpl<Usuario> implements UsuarioD
 		q.setParameter("nombre",usuario.getNombreUsuario());
 		q.setParameter("activo",Boolean.TRUE);
 		return q;
+	}
+
+
+
+
+
+	@Override
+	public void borradoLogico(Usuario entity) {
+		entity=	this.recuperar(entity.getId());
+		entity.setActivo(false);
+		this.actualizar(entity);
 	}
 	
 	

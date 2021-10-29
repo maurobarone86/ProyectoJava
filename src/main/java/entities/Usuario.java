@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,9 +49,11 @@ public class Usuario implements java.io.Serializable{
 	private Boolean activo = true;
 	
 	@OneToMany
+	@JoinColumn
 	private List<Evento> eventos;
 	
 	@OneToMany
+	@JoinColumn
 	private List<Servicio> servicios;
 	
 	

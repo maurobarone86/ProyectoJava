@@ -1,10 +1,13 @@
 package entities;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,7 +34,17 @@ public class Valoracion implements java.io.Serializable {
 	@Column
 	private Integer puntos=0;
 	
+	@ManyToOne
+	@JoinColumn(name="id_servicio")
+	private Servicio servicio;
 	
+	
+	public Servicio getServicio() {
+		return servicio;
+	}
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
+	}
 	public Long getId() {
 		return id;
 	}

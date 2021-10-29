@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.joda.time.LocalDate;
+
 import org.joda.time.LocalTime;
 @Entity
 @Table(name="eventos")
@@ -45,7 +46,7 @@ public class Evento implements java.io.Serializable{
 	private TipoEvento tipo;
 	
 	@Column
-	private LocalDate fecha;
+	private Date fecha;
 	
 	@Column
 	private LocalTime hora;
@@ -113,10 +114,10 @@ public class Evento implements java.io.Serializable{
 		this.geolocalizacion = geolocalizacion;
 	}
 	
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 	public LocalTime getHora() {
@@ -144,7 +145,7 @@ public class Evento implements java.io.Serializable{
 				+ fecha + ", hora=" + hora + ", reservas=" + reservas + ", estado=" + estado + ", id=" + id + "]";
 	}
 	public Evento(String nombre, String direccion, Integer codigoPostal, String provincia, String geolocalizacion,
-			TipoEvento tipo, LocalDate fecha, LocalTime hora, List<Reserva> reservas, Estado estado, Long id) {
+			TipoEvento tipo, Date fecha, LocalTime hora, List<Reserva> reservas, Estado estado, Long id) {
 		super();
 		this.nombre = nombre;
 		this.direccion = direccion;

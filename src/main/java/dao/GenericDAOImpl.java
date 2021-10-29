@@ -10,7 +10,8 @@ import javax.persistence.Query;
 import JPAUtil.Conexion;
 
 
-public class GenericDAOImpl<T> implements GenericDAO<T> {
+
+abstract public class GenericDAOImpl<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
 	public GenericDAOImpl(Class<T> clase) {
 		persistentClass = clase;
@@ -27,7 +28,8 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 			}
 		catch (RuntimeException e) {
 			if ( tx != null && tx.isActive() ) tx.rollback();
-			throw e; // escribir en un log o mostrar un mensaje
+			System.out.println("No se pudo persistir la entidad");
+			throw e; 
 			}
 		finally {
 			em.close();
@@ -63,6 +65,8 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	    	em.close();
 	    	}
 	}
+	
+	abstract public void borradoLogico(T entity);
 	
 	
 	@Override
@@ -111,15 +115,15 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 		return Conexion.getManager().find(getPersistentClass(), id);
 			}
 	
-	public void save(T entity) throws Exception {
+	public T save(T entity) throws Exception {
 		// TODO Auto-generated method stub
 		try {
 			T entityAux = existe(entity);
 			if (entityAux != null){
-				this.actualizar(entityAux);
+				return this.actualizar(entityAux);
 				}
 			else {
-				this.persistir(entity);
+				return this.persistir(entity);
 				}
 			}
 		catch (Exception e) {
@@ -127,9 +131,7 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 			}
 	}
 	
-	public Query makeQuery(T entity) {
-		return null;
-	}
+	abstract public Query makeQuery(T entity);
 	
 public T existe(T entity)throws NoResultException, NonUniqueResultException{
 		
@@ -151,10 +153,7 @@ public T existe(T entity)throws NoResultException, NonUniqueResultException{
 			throw e1;
 		}
 	
-	
-	
-	
-	
-}
+	}
+
 
 }
