@@ -21,12 +21,12 @@ public class MainTestServicioDAO {
 		// TODO Auto-generated method stub
 		imprimirTodosActivos();
 	}
-	public static void agregarServicios() {
+	public static void agregarServicios() throws Exception {
 		Usuario user= usuarioDAO.recuperar(1L);
-		TipoServicio t=(TipoServicio) tipoDAO.obtenerTipo("catering");
+		TipoServicio t=(TipoServicio) tipoDAO.recuperar(1L);
 		System.out.println("El tipo obtenido es: "+t.getNombre());
 		Servicio s1=new Servicio("parrillada", t, "descripcion", "url", 23234234L ,"instagram","twiter");
-		servicioDAO.agregar(s1);
+		servicioDAO.save(s1);
 		List<Servicio> servicios=new ArrayList<Servicio>();
 		servicios.add(s1);
 		user.setServicios(servicios);

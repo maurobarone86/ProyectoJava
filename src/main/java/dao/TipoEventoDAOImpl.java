@@ -8,12 +8,5 @@ public class TipoEventoDAOImpl extends GenericDAOImpl<TipoEvento> implements Tip
 		super(clase);
 		// TODO Auto-generated constructor stub
 	}
-	private static GenericDAO<TipoEvento> genericDAO= new GenericDAOImpl<TipoEvento>(TipoEvento.class);
-	@Override
-	public void agregarTipoEvento(TipoEvento tipo) {
-		// TODO Auto-generated method stub
-		genericDAO.persistir(tipo);
-	}
-
 	
 }

@@ -11,5 +11,6 @@ public T persistir(T entity);
 public T recuperar(Serializable id);
 public List<T> recuperarActivos()throws Exception;
 public List<T> recuperarTodos(String column)throws Exception;
-
+public T existe(T entity);
+public void save(T entity)throws Exception;
 }

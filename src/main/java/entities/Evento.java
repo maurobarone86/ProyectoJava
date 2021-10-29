@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,7 +50,7 @@ public class Evento implements java.io.Serializable{
 	@Column
 	private LocalTime hora;
 	
-	@OneToMany(mappedBy="evento")
+	@OneToMany(mappedBy="evento", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Reserva> reservas;
 	
 	@OneToOne

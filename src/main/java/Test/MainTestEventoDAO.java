@@ -3,6 +3,9 @@ package Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+
+import JPAUtil.Conexion;
 import dao.EventoDAO;
 import dao.EventoDAOImpl;
 import dao.ServicioDAO;
@@ -26,15 +29,15 @@ public class MainTestEventoDAO {
 	private static EventoDAO eventoDAO=new EventoDAOImpl(Evento.class);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		EntityManagerFactory fac= Conexion.getEntityManagerFactory();
 	}
 	
-	public static void agregar() {
+	public static void agregar() throws Exception {
 		Usuario user= usuarioDAO.recuperar(1L);
 		TipoEvento t=(TipoEvento) tipoDAO.recuperar(1L);
 		System.out.println("El tipo obtenido es: "+t.getNombre());
 		Evento e1=new Evento();
-		eventoDAO.agregar(e1);
+		eventoDAO.save(e1);
 		List<Evento> eventos=new ArrayList<Evento>();
 		eventos.add(e1);
 		user.setEventos(eventos);;

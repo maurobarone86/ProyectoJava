@@ -3,6 +3,8 @@ package Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.EstadoDAO;
+import dao.EstadoDAOImpl;
 import dao.EventoDAO;
 import dao.EventoDAOImpl;
 import dao.ReservaDAO;
@@ -26,21 +28,21 @@ public class MainTestReservaDAO {
 	private static ServicioDAO servicioDAO= new ServicioDAOImpl(Servicio.class);
 	private static ReservaDAO reservaDAO= new ReservaDAOImpl(Reserva.class);
 	private static UsuarioDAO userDAO= new UsuarioDAOImpl(Usuario.class);
-	//private static EsatadoDAO estdoDAO=new EstadoDAOImpl(Estado.class);
+	private static EstadoDAO estadoDAO=new EstadoDAOImpl(Estado.class);
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		imprimirTodosActivos();
 	}
-	public static void agregarServicios() {
+	public static void agregarServicios() throws Exception {
 		Evento evento= eventoDAO.recuperar(1L);
 		Servicio ser= servicioDAO.recuperar(1L);
 		Usuario user= userDAO.recuperar(1L);
 		Estado estado=null;
-		// estado= estadoDAO.recuperar(1L);
-		TipoServicio t=(TipoServicio) tipoDAO.obtenerTipo("catering");
+		estado= estadoDAO.recuperar(1L);
+		TipoServicio t=(TipoServicio) tipoDAO.recuperar(1L);
 		System.out.println("El tipo obtenido es: "+t.getNombre());
 		Reserva r1=new Reserva("tarjeta", "pedroRodriguez@gmail.com", 2213445646L, evento, user, ser, estado);
-		reservaDAO.agregar(r1);
+		reservaDAO.save(r1);
 		List<Reserva> reservas=new ArrayList<Reserva>();
 		reservas.add(r1);
 		evento.setReservas(reservas);

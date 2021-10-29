@@ -18,15 +18,15 @@ public class MainTestTipos {
 		// TODO Auto-generated method stub
 		
 	}
-	public static void agregarTipoServicio(String nombre) {
+	public static void agregarTipoServicio(String nombre) throws Exception {
 		tipoS=new TipoServicio();
 		tipoS.setNombre(nombre);
-		tipoServicioDAO.agregarTipo(tipoS);
+		tipoServicioDAO.save(tipoS);
 	}
-	public static void agregarTipoEvento(String nombre) {
+	public static void agregarTipoEvento(String nombre) throws Exception {
 		tipoE=new TipoEvento();
 		tipoE.setNombre(nombre);
-		tipoEventoDAO.agregarTipoEvento(tipoE);
+		tipoEventoDAO.save(tipoE);
 	}
 	
 }

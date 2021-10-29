@@ -7,12 +7,6 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva> implements ReservaDA
 	public ReservaDAOImpl(Class<Reserva> clase) {
 		super(clase);
 		// TODO Auto-generated constructor stub
-	}
-	private GenericDAO<Reserva> genericDAO=new GenericDAOImpl<Reserva>(Reserva.class);
-	@Override
-	public void agregar(Reserva reserva) {
-		// TODO Auto-generated method stub
-		genericDAO.persistir(reserva);
 	} 
 	
 }

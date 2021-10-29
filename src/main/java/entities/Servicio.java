@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,12 +36,12 @@ public class Servicio implements java.io.Serializable{
 	private String instagram;
 	@Column
 	private String twiter;
-	@OneToMany
+	@OneToMany 
 	private List<Valoracion> valoraciones;
 	@OneToMany
 	private List<Imagen> imagenes;
 	
-	@OneToMany(mappedBy="servicio")
+	@OneToMany(mappedBy="servicio", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Reserva> reservas;
 	@Column
 	private Boolean activo = true;
