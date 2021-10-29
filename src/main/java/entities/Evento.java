@@ -129,7 +129,14 @@ public class Evento implements java.io.Serializable{
 		return reservas;
 	}
 	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
+		if (reservas!=null) {
+			this.reservas = reservas;
+		}
+	}
+	public void setReserva(Reserva reserva) {
+		if (reserva!=null) {
+			this.reservas.add(reserva);
+		}
 	}
 	public Boolean getActivo() {
 		return activo;
@@ -157,6 +164,23 @@ public class Evento implements java.io.Serializable{
 		this.reservas = reservas;
 		this.estado = estado;
 		this.id = id;
+	}
+	public Evento(String nombre, String direccion, Integer codigoPostal, String provincia, String geolocalizacion,
+			TipoEvento tipo, LocalDate fecha2, LocalTime hora2, Estado estado) {
+		super();
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.codigoPostal = codigoPostal;
+		this.provincia = provincia;
+		this.geolocalizacion = geolocalizacion;
+		this.tipo = tipo;
+		this.fecha = fecha2;
+		this.hora = hora2;
+		this.estado = estado;
+
+	}
+	public Evento(String nombre) {
+		this.nombre=nombre;
 	}
 	public Evento() {
 		

@@ -49,6 +49,9 @@ public class Estado implements java.io.Serializable{
 			this.nombre = nombre;
 			this.activo = activo;
 		}
+		public Estado(String nombre) {
+			this.nombre=nombre;
+		}
 		public Estado() {
 			
 		}
